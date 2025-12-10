@@ -92,6 +92,9 @@ async function init () {
     return priorityIndexB - priorityIndexA;
   });
 
+  // AV1 doesn't seem to be included in WASM FFmpeg
+  supportedFormats.splice(supportedFormats.findIndex(c => c.mime === "image/avif"), 1);
+
   await ffmpeg.terminate();
 
 }
